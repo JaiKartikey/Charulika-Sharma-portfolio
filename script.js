@@ -95,8 +95,19 @@ draw();
 
 
 const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+const navLinks = document.querySelector('.nav-links');
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// Select all individual links inside the menu
+const individualLinks = document.querySelectorAll('.nav-links a');
+
+// Toggle menu open/close on hamburger click
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Automatically close menu when any link is clicked
+individualLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
   });
+});
